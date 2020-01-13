@@ -19,3 +19,5 @@ if (gue > num) {
     console.log("Nope, guess lower");
     var gue = Number(prompt("Guess a number between 1 and 10?"));
 }
+
+// This is the guess a number game
