@@ -1,47 +1,47 @@
-// javascript functions problem set (148)
+// this is to let the html load first - delays js script running
+// var todos = ["Buy New Turtle"];
+// window.setTimeout(function () {
+// put all the rest of your JS code from the lecture here
+// }, 500);
 
-// write isEven() function, looks at numeric argument and returns true if even
-function isEven(x) {
-    if (x % 2 === 0) {
-        return (true);
+// To Do List app
+
+var todos = ["Buy dart board", "New musical spoons", "6 turtle doves"];
+
+window.setTimeout(function () {
+    // list slows the loading of the js script so the html can load
+
+    var input = prompt("What would you like to do?");
+
+    while (input !== "quit") {
+        if (input === "list") {
+            listTodos();
+        } else if (input === "new") {
+            addTodo();
+        } else if (input === "quit") {
+            console.log(todos);
+        } else if (input === "remove") {
+            var index = prompt("Enter the index (number) of todo to delete");
+            todos.splice(index, 1);
+            console.log("Removed " + index + " from your list");
+            listTodos();
+        }
+        input = prompt("What would you like to do?");
     }
-    return (false);
-}
+    console.log("Gooooodbye, quitter");
 
-// fancier way
-function isEven(num) {
-    return num % 2 === 0
-}
-
-isEven(4);
-isEven(21);
-isEven(68);
-isEven(333);
-
-// write factorial() which takes a numeric argument and returns factorial of that number
-
-function factorial(num) {
-    // define result variable
-    var result = 1;
-    // calculate factorial and store value in result
-    for (var i = 2; i <= num; i++) {
-        result *= i;
-        // this is short version of result = result * i
+    function listTodos() {
+        console.log("**************");
+        todos.forEach(function (todo, i) {
+            console.log(i + ": " + todo);
+        });
+        console.log("**************");
     }
-    return result;
-}
 
-factorial(5);
-factorial(2);
-factorial(10);
-factorial(0);
+    function addTodo() {
+        var newTodo = prompt("Enter new todo");
+        todos.push(newTodo);
+        console.log("Added " + newTodo + " to your list");
+    }
 
-// write function that takes kebab-cased-string and turns it into snake_cased
-function kebabToSnake(str) {
-    var snake = str.replace(/-/g, "_");
-    return (snake);
-}
-
-kebabToSnake("hello-world");
-kebabToSnake("dogs-are-awesome");
-kebabToSnake("blah");
+}, 500);
