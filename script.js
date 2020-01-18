@@ -1,47 +1,57 @@
-// this is to let the html load first - delays js script running
-// var todos = ["Buy New Turtle"];
-// window.setTimeout(function () {
-// put all the rest of your JS code from the lecture here
-// }, 500);
+// 163 array problem sets
 
-// To Do List app
+// exercise 1
+function printReverse(arr) {
+    for (i = arr.length - 1; i >= 0; i--) {
+        console.log(arr[i]);
+    }
+}
 
-var todos = ["Buy dart board", "New musical spoons", "6 turtle doves"];
+printReverse([1, 2, 3, 4]);
 
-window.setTimeout(function () {
-    // list slows the loading of the js script so the html can load
 
-    var input = prompt("What would you like to do?");
 
-    while (input !== "quit") {
-        if (input === "list") {
-            listTodos();
-        } else if (input === "new") {
-            addTodo();
-        } else if (input === "quit") {
-            console.log(todos);
-        } else if (input === "remove") {
-            var index = prompt("Enter the index (number) of todo to delete");
-            todos.splice(index, 1);
-            console.log("Removed " + index + " from your list");
-            listTodos();
+// exercise 2 - write function to see if all things in a array are uniform
+// needs a loop to compare first var vs second
+
+function isUniform(arr) {
+    var num1 = arr[0];
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i] !== num1) {
+            return false;
         }
-        input = prompt("What would you like to do?");
     }
-    console.log("Gooooodbye, quitter");
+    return true;
+}
 
-    function listTodos() {
-        console.log("**************");
-        todos.forEach(function (todo, i) {
-            console.log(i + ": " + todo);
-        });
-        console.log("**************");
+isUniform([1, 1, 1, 1]);
+isUniform([a, b, b, c]);
+
+// sum array 
+
+function sumArray(arr) {
+    var total = 0;
+    arr.forEach(function (element) {
+        total += element;
+    })
+    return total;
+}
+
+sumArray([1, 2, 3, 4]);
+sumArray([10, 3, 10, 4]);
+sumArray([-5, 100]);
+
+// max array - returns biggest number
+function max(arr) {
+    var max = arr[0];
+    for (var i = 1; i < arr.length; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
     }
+    return max;
+}
 
-    function addTodo() {
-        var newTodo = prompt("Enter new todo");
-        todos.push(newTodo);
-        console.log("Added " + newTodo + " to your list");
-    }
-
-}, 500);
+max([1, 2, 3, 4]);
+max([10, 3, 4, 10]);
+max([100, -5]);
