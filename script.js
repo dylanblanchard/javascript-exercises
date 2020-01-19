@@ -1,57 +1,29 @@
-// 163 array problem sets
+// 170 movie database exercise
 
-// exercise 1
-function printReverse(arr) {
-    for (i = arr.length - 1; i >= 0; i--) {
-        console.log(arr[i]);
+var movies = [{
+        name: "Scrubbs butt",
+        hasWatched: true,
+        rating: 3.5
+    },
+    {
+        name: "The Big Lebowski",
+        hasWatched: true,
+        rating: 5
+    }, {
+        name: "Bond",
+        hasWatched: false,
+        rating: 4
     }
-}
+];
 
-printReverse([1, 2, 3, 4]);
-
-
-
-// exercise 2 - write function to see if all things in a array are uniform
-// needs a loop to compare first var vs second
-
-function isUniform(arr) {
-    var num1 = arr[0];
-    for (var i = 0; i < arr.length; i++) {
-        if (arr[i] !== num1) {
-            return false;
-        }
+movies.forEach(function (movie) {
+    var result = "You have ";
+    if (movie.hasWatched) {
+        result += "watched ";
+    } else {
+        result += "not watched ";
     }
-    return true;
-}
-
-isUniform([1, 1, 1, 1]);
-isUniform([a, b, b, c]);
-
-// sum array 
-
-function sumArray(arr) {
-    var total = 0;
-    arr.forEach(function (element) {
-        total += element;
-    })
-    return total;
-}
-
-sumArray([1, 2, 3, 4]);
-sumArray([10, 3, 10, 4]);
-sumArray([-5, 100]);
-
-// max array - returns biggest number
-function max(arr) {
-    var max = arr[0];
-    for (var i = 1; i < arr.length; i++) {
-        if (arr[i] > max) {
-            max = arr[i];
-        }
-    }
-    return max;
-}
-
-max([1, 2, 3, 4]);
-max([10, 3, 4, 10]);
-max([100, -5]);
+    result += "\"" + movie.name + "\" – ";
+    result += movie.rating + " stars";
+    console.log(result);
+})
